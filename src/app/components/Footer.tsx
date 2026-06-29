@@ -124,30 +124,7 @@ const Footer = () => {
                   About Us
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-purple-200 hover:text-white transition-colors duration-300"
-                >
-                  Blog & Articles
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy"
-                  className="text-purple-200 hover:text-white transition-colors duration-300"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/terms"
-                  className="text-purple-200 hover:text-white transition-colors duration-300"
-                >
-                  Terms of Service
-                </Link>
-              </li>
+
               <li>
                 <Link
                   href="/faq"

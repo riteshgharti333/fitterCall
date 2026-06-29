@@ -37,7 +37,7 @@ const AllCallPage = () => {
               onMouseLeave={() => setHoveredCard(null)}
             >
               <div
-                className={`h-full bg-gray-800 bg-opacity-40 rounded-xl p-6 border border-purple-700 border-opacity-30 backdrop-blur-sm transition-all duration-500 transform-gpu ${
+                className={`h-full  bg-opacity-40 rounded-xl p-6 border border-purple-700 border-opacity-30 backdrop-blur-sm transition-all duration-500 transform-gpu ${
                   hoveredCard === index
                     ? "shadow-xl shadow-purple-500/20 -translate-y-2"
                     : "hover:shadow-lg hover:shadow-purple-500/10"

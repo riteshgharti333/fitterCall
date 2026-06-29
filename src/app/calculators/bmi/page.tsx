@@ -110,10 +110,8 @@ const BMIPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-purple-900 text-white py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center p-3 bg-gradient-to-r from-purple-600 to-pink-500 rounded-full mb-4">
-            <FaCalculator className="text-2xl text-white" />
-          </div>
+        <div className="text-center mb-12 mt-5">
+          
           <h1 className="text-4xl font-bold mb-4">
             BMI <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Calculator</span>
           </h1>
