@@ -39,6 +39,8 @@ const Banner = () => {
 
   // Intersection Observer to trigger count animation
   useEffect(() => {
+    const currentRef = sectionRef.current; // Copy ref to variable
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -48,13 +50,13 @@ const Banner = () => {
       { threshold: 0.3 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) { // Use the copied variable in cleanup
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -63,7 +65,7 @@ const Banner = () => {
   useEffect(() => {
     if (!isVisible) return;
 
-    const duration = 2000; // 2 seconds
+    const duration = 2000;
     const steps = 60;
     const interval = duration / steps;
 
@@ -116,7 +118,7 @@ const Banner = () => {
             <span className="text-sm font-medium text-purple-300">Fitness Intelligence Platform</span>
           </div>
           
-          {/* Main heading with typing effect */}
+          {/* Main heading */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
             <span className="animate-fade-in-left inline-block">Transform</span>{" "}
             <span className="animate-fade-in-right inline-block">Your</span>
@@ -131,7 +133,7 @@ const Banner = () => {
             achieve your goals, and unlock your full potential.
           </p>
 
-          {/* CTA Buttons with stagger animation */}
+          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Link
               href="/calculators"
@@ -183,7 +185,7 @@ const Banner = () => {
             </div>
           </div>
 
-          {/* Feature cards with stagger animation */}
+          {/* Feature cards */}
           <div className="w-full max-w-4xl">
             <h2 className="text-3xl font-bold text-white mb-12 animate-fade-in-up animation-delay-1000">
               Featured Calculators
@@ -192,7 +194,7 @@ const Banner = () => {
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className={`group relative p-6 rounded-2xl bg-gradient-to-b from-gray-900/50 to-gray-800/30 border border-purple-700/20 backdrop-blur-lg transition-all duration-500 hover:scale-105 hover:shadow-xl hover:border-purple-500/40 animate-fade-in-up`}
+                  className="group relative p-6 rounded-2xl bg-gradient-to-b from-gray-900/50 to-gray-800/30 border border-purple-700/20 backdrop-blur-lg transition-all duration-500 hover:scale-105 hover:shadow-xl hover:border-purple-500/40 animate-fade-in-up"
                   style={{ animationDelay: `${1200 + index * 200}ms` }}
                 >
                   <div className="flex flex-col items-center text-center">
@@ -218,7 +220,6 @@ const Banner = () => {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-950 to-transparent"></div>
 
       <style jsx>{`
-        /* Pulse animations */
         @keyframes pulse {
           0%, 100% { opacity: 0.3; }
           50% { opacity: 0.6; }
@@ -233,7 +234,6 @@ const Banner = () => {
           animation-delay: 4s;
         }
 
-        /* Spin animations for geometric patterns */
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
@@ -258,30 +258,17 @@ const Banner = () => {
           animation: pulse-slow 6s ease-in-out infinite;
         }
 
-        /* Fade in animations */
         @keyframes fadeInDown {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in-down {
           animation: fadeInDown 0.8s ease-out forwards;
         }
 
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in-up {
           opacity: 0;
@@ -289,14 +276,8 @@ const Banner = () => {
         }
 
         @keyframes fadeInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
+          from { opacity: 0; transform: translateX(-30px); }
+          to { opacity: 1; transform: translateX(0); }
         }
         .animate-fade-in-left {
           opacity: 0;
@@ -304,53 +285,29 @@ const Banner = () => {
         }
 
         @keyframes fadeInRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
+          from { opacity: 0; transform: translateX(30px); }
+          to { opacity: 1; transform: translateX(0); }
         }
         .animate-fade-in-right {
           opacity: 0;
           animation: fadeInRight 0.8s ease-out forwards;
         }
 
-        /* Gradient animation */
         @keyframes gradientX {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
         }
         .animate-gradient-x {
           background-size: 200% 200%;
           animation: gradientX 3s ease-in-out infinite;
         }
 
-        /* Animation delays */
-        .animation-delay-300 {
-          animation-delay: 300ms;
-        }
-        .animation-delay-500 {
-          animation-delay: 500ms;
-        }
-        .animation-delay-700 {
-          animation-delay: 700ms;
-        }
-        .animation-delay-800 {
-          animation-delay: 800ms;
-        }
-        .animation-delay-900 {
-          animation-delay: 900ms;
-        }
-        .animation-delay-1000 {
-          animation-delay: 1000ms;
-        }
+        .animation-delay-300 { animation-delay: 300ms; }
+        .animation-delay-500 { animation-delay: 500ms; }
+        .animation-delay-700 { animation-delay: 700ms; }
+        .animation-delay-800 { animation-delay: 800ms; }
+        .animation-delay-900 { animation-delay: 900ms; }
+        .animation-delay-1000 { animation-delay: 1000ms; }
       `}</style>
     </div>
   );

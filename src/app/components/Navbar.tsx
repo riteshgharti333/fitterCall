@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { IconType } from "react-icons"; // Add this import
 import { FaBars, FaTimes } from "react-icons/fa";
 
 import {
@@ -19,7 +20,7 @@ import {
 export interface NavLink {
   name: string;
   href: string;
-  icon: any;
+  icon: IconType; // ✅ Changed from 'any' to 'IconType'
   description?: string;
   mobileOnly?: boolean;
 }
@@ -95,13 +96,9 @@ const Navbar = () => {
       }
     };
 
-    // Add scroll listener
     window.addEventListener("scroll", handleScroll);
-
-    // Check initial scroll position
     handleScroll();
 
-    // Cleanup
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -131,7 +128,6 @@ const Navbar = () => {
     }`;
   };
 
-  // All links for mobile (main + extras)
   const allMobileLinks = [...mainNavLinks, ...mobileExtraLinks];
 
   return (
@@ -144,14 +140,12 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo / Home Button */}
           <div className="flex-shrink-0">
             <Link
               href="/"
               className="flex items-center gap-2 group"
               aria-label="FitterCall Home"
             >
-              {/* Logo Icon */}
               <div
                 className={`w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-all duration-300 ${
                   isScrolled ? "shadow-md shadow-purple-500/30" : ""
@@ -159,14 +153,12 @@ const Navbar = () => {
               >
                 <span className="text-white font-bold text-sm">FC</span>
               </div>
-              {/* Brand Name */}
               <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hidden sm:block">
                 FitterCall
               </span>
             </Link>
           </div>
 
-          {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="flex items-center space-x-1">
               {mainNavLinks.map((link) => (
@@ -183,7 +175,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -205,7 +196,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
         className={`md:hidden transition-all duration-300 ease-in-out ${
           isOpen

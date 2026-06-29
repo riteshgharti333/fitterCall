@@ -1,7 +1,6 @@
 "use client";
 import { useState } from 'react';
 import { FaCalculator, FaWeight, FaRunning, FaTemperatureHigh, FaExclamationTriangle, FaInfoCircle, FaTint } from 'react-icons/fa';
-import { FaGlassWater } from 'react-icons/fa6';
 
 const WaterIntakePage = () => {
   const [weight, setWeight] = useState('');

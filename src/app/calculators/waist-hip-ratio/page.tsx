@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import { FaCalculator, FaRuler, FaTape, FaHeart, FaExclamationTriangle, FaVenusMars } from 'react-icons/fa';
+import { FaCalculator, FaRuler, FaHeart, FaExclamationTriangle, FaVenusMars } from 'react-icons/fa';
 
 const WHRPage = () => {
   const [gender, setGender] = useState('male');
