@@ -27,24 +27,6 @@ const AboutPage = () => {
     }
   ];
 
-  const team = [
-    {
-      name: "Alex Johnson",
-      role: "Founder & Fitness Expert",
-      bio: "10+ years in sports medicine and nutritional science."
-    },
-    {
-      name: "Maria Chen",
-      role: "Lead Developer",
-      bio: "Full-stack developer passionate about health technology."
-    },
-    {
-      name: "Dr. James Wilson",
-      role: "Medical Advisor",
-      bio: "Board-certified physician specializing in preventive medicine."
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-purple-950 to-gray-950 text-white">
       {/* Header Section */}
